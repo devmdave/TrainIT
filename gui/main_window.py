@@ -6,12 +6,14 @@ from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                              QPushButton, QLabel, QFileDialog, QComboBox,
                              QProgressBar, QTextEdit, QGroupBox, QSpinBox,
                              QDoubleSpinBox, QCheckBox, QTabWidget, QSplitter,
-                             QFrame, QScrollArea)
+                             QFrame, QScrollArea, QMessageBox)
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QTimer
 from PyQt5.QtGui import QIcon, QFont, QPalette, QColor
 from gui.styles import StyleManager
 from gui.widgets import ModernCard, AnimatedButton, StatusIndicator
+from backend.pipeline import TrainingPipeline
 import os
+import traceback
 
 
 class TrainingThread(QThread):
@@ -19,43 +21,84 @@ class TrainingThread(QThread):
     progress = pyqtSignal(int)
     status = pyqtSignal(str)
     finished = pyqtSignal(dict)
+    error = pyqtSignal(str)
     
     def __init__(self, config):
         super().__init__()
         self.config = config
+        self.pipeline = TrainingPipeline()
         self.is_running = False
     
     def run(self):
         """Run the training process"""
         self.is_running = True
         try:
+            # Load datasets
             self.status.emit("Loading datasets...")
-            self.progress.emit(10)
+            self.progress.emit(5)
             
-            # Simulate training process
-            import time
-            for i in range(10, 100, 10):
-                if not self.is_running:
-                    break
-                time.sleep(0.5)
-                self.progress.emit(i)
-                self.status.emit(f"Training... {i}%")
+            dataset_info = self.pipeline.load_datasets(
+                train_path=self.config['train_data'],
+                test_path=self.config.get('test_data'),
+                target_column=None,  # Auto-detect last column
+                progress_callback=self.update_progress_load,
+                status_callback=self.status.emit
+            )
             
-            if self.is_running:
+            if not self.is_running:
+                return
+            
+            # Log dataset information
+            self.status.emit(f"✓ Loaded {dataset_info['train_samples']} training samples")
+            self.status.emit(f"✓ Loaded {dataset_info['val_samples']} validation samples")
+            if dataset_info['test_samples'] > 0:
+                self.status.emit(f"✓ Loaded {dataset_info['test_samples']} test samples")
+            self.status.emit(f"✓ Features: {dataset_info['n_features']}, Classes: {dataset_info['n_classes']}")
+            
+            self.progress.emit(15)
+            
+            # Train model
+            self.status.emit(f"\n{'='*50}")
+            self.status.emit(f"Starting {self.config['algorithm']} training...")
+            self.status.emit(f"{'='*50}")
+            
+            results = self.pipeline.train_model(
+                algorithm=self.config['algorithm'],
+                epochs=self.config['epochs'],
+                batch_size=self.config['batch_size'],
+                learning_rate=self.config['learning_rate'],
+                auto_tune=self.config['auto_tune'],
+                progress_callback=self.update_progress_train,
+                status_callback=self.status.emit
+            )
+            
+            if not self.is_running:
+                return
+            
+            if results:
                 self.progress.emit(100)
-                self.status.emit("Training completed!")
-                results = {
-                    'accuracy': 0.95,
-                    'loss': 0.05,
-                    'epochs': self.config.get('epochs', 10)
-                }
                 self.finished.emit(results)
+            
         except Exception as e:
-            self.status.emit(f"Error: {str(e)}")
+            error_msg = f"Training error: {str(e)}\n{traceback.format_exc()}"
+            self.error.emit(error_msg)
+            self.status.emit(f"❌ Error: {str(e)}")
+    
+    def update_progress_load(self, value):
+        """Update progress during data loading (0-15%)"""
+        if self.is_running:
+            self.progress.emit(int(value * 0.15))
+    
+    def update_progress_train(self, value):
+        """Update progress during training (15-100%)"""
+        if self.is_running:
+            self.progress.emit(int(15 + value * 0.85))
     
     def stop(self):
         """Stop the training process"""
         self.is_running = False
+        if hasattr(self, 'pipeline'):
+            self.pipeline.stop_training()
 
 
 class MainWindow(QMainWindow):
@@ -415,6 +458,7 @@ class MainWindow(QMainWindow):
         self.training_thread.progress.connect(self.update_progress)
         self.training_thread.status.connect(self.update_status)
         self.training_thread.finished.connect(self.training_finished)
+        self.training_thread.error.connect(self.training_error)
         self.training_thread.start()
         
         self.status_indicator.set_status("running")
@@ -448,32 +492,121 @@ class MainWindow(QMainWindow):
         self.log_message("✅ Training Completed Successfully!")
         self.log_message(f"{'='*50}\n")
         
-        # Display results
+        # Format results
         results_text = f"""
-Training Results
-================
+╔═══════════════════════════════════════════════════╗
+║           TRAINING RESULTS                        ║
+╚═══════════════════════════════════════════════════╝
 
-Algorithm: {self.algo_combo.currentText()}
-Epochs Completed: {results['epochs']}
-Final Accuracy: {results['accuracy']*100:.2f}%
-Final Loss: {results['loss']:.4f}
+Algorithm: {results.get('algorithm', 'Unknown')}
+Auto-tuned: {'Yes' if results.get('auto_tuned', False) else 'No'}
+Training Time: {results.get('training_time', 0):.2f} seconds
 
-Model is ready for export!
+╔═══════════════════════════════════════════════════╗
+║           VALIDATION METRICS                      ║
+╚═══════════════════════════════════════════════════╝
+Accuracy:  {results.get('val_accuracy', 0)*100:.2f}%
+Precision: {results.get('val_precision', 0)*100:.2f}%
+Recall:    {results.get('val_recall', 0)*100:.2f}%
+F1-Score:  {results.get('val_f1', 0)*100:.2f}%
 """
+        
+        # Add cross-validation results if available
+        if 'cv_mean' in results:
+            results_text += f"""
+╔═══════════════════════════════════════════════════╗
+║           CROSS-VALIDATION                        ║
+╚═══════════════════════════════════════════════════╝
+CV Mean:   {results['cv_mean']*100:.2f}%
+CV Std:    {results['cv_std']*100:.2f}%
+"""
+        
+        # Add test metrics if available
+        if 'test_metrics' in results:
+            test = results['test_metrics']
+            results_text += f"""
+╔═══════════════════════════════════════════════════╗
+║           TEST SET METRICS                        ║
+╚═══════════════════════════════════════════════════╝
+Accuracy:  {test.get('accuracy', 0)*100:.2f}%
+Precision: {test.get('precision', 0)*100:.2f}%
+Recall:    {test.get('recall', 0)*100:.2f}%
+F1-Score:  {test.get('f1_score', 0)*100:.2f}%
+"""
+        
+        # Add best parameters if auto-tuned
+        if 'best_params' in results and results['best_params']:
+            results_text += f"\n╔═══════════════════════════════════════════════════╗\n"
+            results_text += f"║           BEST HYPERPARAMETERS                    ║\n"
+            results_text += f"╚═══════════════════════════════════════════════════╝\n"
+            for param, value in results['best_params'].items():
+                results_text += f"{param}: {value}\n"
+        
+        results_text += f"\n✅ Model is ready for export!\n"
+        
         self.results_text.setPlainText(results_text)
         self.metrics_tabs.setCurrentIndex(1)
+        
+        # Show success message
+        QMessageBox.information(
+            self,
+            "Training Complete",
+            f"Model training completed successfully!\n\n"
+            f"Validation Accuracy: {results.get('val_accuracy', 0)*100:.2f}%"
+        )
+    
+    def training_error(self, error_msg):
+        """Handle training errors"""
+        self.train_btn.setEnabled(True)
+        self.stop_btn.setEnabled(False)
+        self.status_indicator.set_status("error")
+        
+        self.log_message(f"\n{'='*50}")
+        self.log_message("❌ Training Failed!")
+        self.log_message(f"{'='*50}")
+        self.log_message(error_msg)
+        
+        # Show error dialog
+        QMessageBox.critical(
+            self,
+            "Training Error",
+            f"An error occurred during training:\n\n{error_msg.split(chr(10))[0]}"
+        )
     
     def export_model(self):
         """Export trained model"""
+        if not self.training_thread or not hasattr(self.training_thread, 'pipeline'):
+            QMessageBox.warning(self, "Export Error", "No trained model available to export!")
+            return
+        
         file_path, _ = QFileDialog.getSaveFileName(
             self,
             "Export Model",
             "trained_model.pkl",
-            "Model Files (*.pkl *.h5 *.joblib);;All Files (*.*)"
+            "Model Files (*.pkl *.joblib);;All Files (*.*)"
         )
+        
         if file_path:
-            self.log_message(f"💾 Model exported to: {file_path}")
-            self.statusBar().showMessage(f"Model exported successfully to {os.path.basename(file_path)}")
+            try:
+                # Ensure .pkl extension
+                if not file_path.endswith('.pkl') and not file_path.endswith('.joblib'):
+                    file_path += '.pkl'
+                
+                # Save the model
+                self.training_thread.pipeline.save_model(file_path)
+                
+                self.log_message(f"💾 Model exported to: {file_path}")
+                self.statusBar().showMessage(f"Model exported successfully to {os.path.basename(file_path)}")
+                
+                QMessageBox.information(
+                    self,
+                    "Export Successful",
+                    f"Model has been successfully exported to:\n{file_path}"
+                )
+            except Exception as e:
+                error_msg = f"Failed to export model: {str(e)}"
+                self.log_message(f"❌ {error_msg}")
+                QMessageBox.critical(self, "Export Error", error_msg)
     
     def log_message(self, message):
         """Add message to console"""
