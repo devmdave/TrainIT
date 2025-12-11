@@ -57,6 +57,21 @@ graph LR
     D --> E[💾 Export Model]
     style A fill:#10b981,stroke:#059669,stroke-width:3px,color:#fff
     style B fill:#3b82f6,stroke:#2563eb,stroke-width:3px,color:#fff
+    style C fill:#f59e0b,stroke:#d97706,stroke-width:3px,color:#fff
+    style D fill:#8b5cf6,stroke:#7c3aed,stroke-width:3px,color:#fff
+    style E fill:#ef4444,stroke:#dc2626,stroke-width:3px,color:#fff
+```
+
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="800">
+</div>
+
+<br/>
+
 <div align="center">
 
 ## ✨ Features
@@ -67,27 +82,19 @@ graph LR
 
 <table>
 <tr>
-<td width="50%" align="center">
-
-<img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" width="80" alt=""/>
+<td width="50%">
 
 ### 🎯 **Intuitive GUI**
-
-<img src="https://skillicons.dev/icons?i=python,qt" />
 
 ✅ Clean, modern interface  
 ✅ Drag-and-drop dataset loading  
 ✅ Real-time training visualization  
-✅ Progress tracking with detailed metrics
+✅ Progress tracking with metrics
 
 </td>
-<td width="50%" align="center">
-
-<img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" width="80" alt=""/>
+<td width="50%">
 
 ### ⚡ **Automated Training**
-
-<img src="https://skillicons.dev/icons?i=tensorflow,pytorch" />
 
 ✅ One-click model training  
 ✅ Automatic hyperparameter tuning  
@@ -97,11 +104,35 @@ graph LR
 </td>
 </tr>
 <tr>
-<td width="50%" align="center">
-
-<img src="https://user-images.githubusercontent.com/74038190/212257454-16e3712e-945a-4ca2-b238-408ad0bf87e6.gif" width="80" alt=""/>
+<td width="50%">
 
 ### 📊 **Comprehensive Analytics**
+
+✅ Training/validation curves  
+✅ Performance metrics dashboard  
+✅ Confusion matrix visualization  
+✅ Model comparison charts
+
+</td>
+<td width="50%">
+
+### 🔧 **Flexible Configuration**
+
+✅ Multiple ML frameworks  
+✅ Custom model architectures  
+✅ Train/test split configuration  
+✅ Cross-validation support
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="800">
+</div>
+
+<br/>
+
 <div align="center">
 
 ## 🚀 Quick Start
@@ -112,14 +143,8 @@ graph LR
 
 ### 📋 Prerequisites
 
-<div align="center">
-
-| Requirement | Version | Badge |
-|------------|---------|-------|
-| Python | 3.8+ | ![Python](https://img.shields.io/badge/Python-3.8+-306998?style=flat-square&logo=python&logoColor=white) |
-| pip | Latest | ![pip](https://img.shields.io/badge/pip-Latest-0073e6?style=flat-square&logo=pypi&logoColor=white) |
-
-</div>
+- Python 3.8 or higher
+- pip package manager
 
 ### ⚡ Installation
 
@@ -138,6 +163,13 @@ python main.py
 <div align="center">
 
 **🎉 That's it! You're ready to train your models!**
+
+<img src="https://user-images.githubusercontent.com/74038190/212284136-03988914-d899-44b4-b1d9-4eeccf656e44.gif" width="500">
+
+</div>
+
+<br/>
+
 <div align="center">
 
 ## 💡 Usage
@@ -146,44 +178,71 @@ python main.py
 
 </div>
 
-<table>
-<tr>
-<td width="25%" align="center">
-<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/29fd6286-4e7b-4d6c-818f-c4765d5e39a9" width="100" /><br/>
-<b>Step 1</b><br/>
-Launch App
-<br/><br/>
-
+### **Step 1:** Launch the Application
 ```bash
 python main.py
 ```
 
-</td>
-<td width="25%" align="center">
-<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/de038172-e903-4951-926c-755878deb0b4" width="100" /><br/>
-<b>Step 2</b><br/>
-Load Dataset
-<br/><br/>
-📂 Training Data<br/>
-🧪 Test Data<br/>
-📊 CSV, Excel, JSON
-</td>
-<td width="25%" align="center">
-<img src="https://github.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/assets/74038190/3b4607a1-1cc6-41f1-926f-892ae880e7a5" width="100" /><br/>
+### **Step 2:** Load Your Dataset
+- 📂 Browse and select your **training dataset**
+- 🧪 Browse and select your **test dataset**  
+- 📊 Supported formats: CSV, Excel, JSON, Parquet
+
+### **Step 3:** Configure & Train
+- ⚙️ Select your preferred ML model
+- 🎚️ Adjust hyperparameters (or use auto-tuning)
+- 🚀 Click **Train** to start the process
+- 📈 Monitor real-time progress and metrics
+
+### **Step 4:** Evaluate & Export
+- 📊 Review comprehensive performance metrics
+- 💾 Export your trained model
+- 📄 Generate detailed analysis reports
+
+<div align="center">
+
+### 🎯 Supported File Formats
+
+<img src="https://img.shields.io/badge/CSV-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="CSV"/>
+<img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Excel"/>
+<img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON"/>
+<img src="https://img.shields.io/badge/Parquet-50ABF1?style=for-the-badge&logo=apache&logoColor=white" alt="Parquet"/>
+
+</div>
+
+<br/>
+
 <div align="center">
 
 ## 🎨 Screenshots
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="700">
 
 </div>
 
-<table>
-<tr>
-<td width="50%">
-<div align="center">
-
 ### 🖥️ Main Interface
+<p align="center">
+  <img src="https://via.placeholder.com/700x400/667eea/ffffff?text=Main+Interface" alt="Main Interface" width="700"/>
+</p>
+<p align="center"><i>Beautiful, intuitive design for seamless workflow</i></p>
+
+### 📊 Training Dashboard  
+<p align="center">
+  <img src="https://via.placeholder.com/700x400/f093fb/ffffff?text=Training+Dashboard" alt="Training Dashboard" width="700"/>
+</p>
+<p align="center"><i>Real-time metrics and visualizations at your fingertips</i></p>
+
+### 📈 Results Analysis
+<p align="center">
+  <img src="https://via.placeholder.com/700x400/43e97b/ffffff?text=Results+Analysis" alt="Results" width="700"/>
+</p>
+<p align="center"><i>Comprehensive model performance insights</i></p>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="800">
+</div>
+
+<br/>
 
 <div align="center">
 
@@ -193,11 +252,39 @@ Load Dataset
 
 </div>
 
+### 📁 Data Support
+- ✅ CSV Dataset
+- ✅ Excel Dataset  
+- ✅ JSON Dataset
+- ✅ Parquet Files
+
+### 🤖 ML Capabilities
+- ✅ Multiple Algorithms
+- ✅ Auto Model Selection
+- ✅ Hyperparameter Tuning
+- ✅ Cross-validation
+
+### 📊 Visualization & Export
+- ✅ Real-time Charts
+- ✅ Model Export
+- ✅ Performance Metrics
+- ✅ Report Generation
+
 <div align="center">
 
-<table>
-<tr>
-<td align="center" width="33%">
+### 🔧 Supported ML Frameworks
+
+<img src="https://skillicons.dev/icons?i=python,tensorflow,pytorch,sklearn" />
+
+<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+<img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
+<img src="https://img.shields.io/badge/XGBoost-1572B6?style=for-the-badge&logo=xgboost&logoColor=white" />
+<img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white" />
+
+</div>
+
+<br/>
 
 <div align="center">
 
@@ -205,9 +292,20 @@ Load Dataset
 
 <img src="https://user-images.githubusercontent.com/74038190/212257460-738ff738-247f-4445-a718-cdd0ca76e2db.gif" width="100">
 
+</div>
+
+For detailed documentation, visit our [Wiki](https://github.com/devmdave/TrainIT/wiki) or explore:
+
+- 📖 [Getting Started Guide](docs/getting-started.md)
+- ⚙️ [Configuration Options](docs/configuration.md)
+- 📡 [API Reference](docs/api-reference.md)
+- ❓ [FAQ](docs/faq.md)
+- 🎥 [Video Tutorials](docs/tutorials.md)
+- 💻 [Code Examples](docs/examples.md)
+- 🐛 [Troubleshooting](docs/troubleshooting.md)
+
 <br/>
 
-<table>
 <div align="center">
 
 ## 🤝 Contributing
@@ -219,6 +317,50 @@ Load Dataset
 </div>
 
 <div align="center">
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#a855f7','primaryTextColor':'#fff','primaryBorderColor':'#9333ea','lineColor':'#c084fc','secondaryColor':'#d8b4fe','tertiaryColor':'#e9d5ff'}}}%%
+gitGraph
+    commit id: "Initial"
+    branch feature
+    checkout feature
+    commit id: "Add Feature"
+    commit id: "Tests"
+    checkout main
+    merge feature
+    commit id: "Release"
+```
+
+</div>
+
+**How to contribute:**
+
+1. 🍴 **Fork** the repository
+2. 🔨 **Create** a feature branch (`git checkout -b feature/AmazingFeature`)
+3. 💻 **Make** your changes
+4. ✅ **Commit** your changes (`git commit -m 'Add AmazingFeature'`)
+5. 📤 **Push** to the branch (`git push origin feature/AmazingFeature`)
+6. 🎉 **Open** a Pull Request
+
+<div align="center">
+
+### 👥 Contributors
+
+<a href="https://github.com/devmdave/TrainIT/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=devmdave/TrainIT" />
+</a>
+
+<br/><br/>
+
+**Thank you to all our amazing contributors! 🎉**
+
+<img src="https://img.shields.io/github/contributors/devmdave/TrainIT?style=for-the-badge&color=blueviolet" />
+<img src="https://img.shields.io/github/forks/devmdave/TrainIT?style=for-the-badge&color=blue" />
+<img src="https://img.shields.io/github/issues-pr/devmdave/TrainIT?style=for-the-badge&color=green" />
+
+</div>
+
+<br/>
 
 <div align="center">
 
@@ -244,32 +386,12 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <img src="https://skillicons.dev/icons?i=python,tensorflow,pytorch,sklearn,qt,vscode,github" />
 
-<br/>
+<br/><br/>
 
-<table>
-<tr>
-<td align="center">
-<img src="https://img.icons8.com/fluency/48/brain.png" width="40"/><br/>
-<b>ML Libraries</b><br/>
-TensorFlow, PyTorch, Scikit-learn
-</td>
-<td align="center">
-<img src="https://img.icons8.com/fluency/48/code.png" width="40"/><br/>
-<b>Development</b><br/>
-Python Community
-</td>
-<td align="center">
-<img src="https://img.icons8.com/fluency/48/user-group-man-man.png" width="40"/><br/>
-<b>Contributors</b><br/>
-Amazing Open Source Community
-</td>
-<td align="center">
-<img src="https://img.icons8.com/fluency/48/coffee-to-go.png" width="40"/><br/>
-<b>Fuel</b><br/>
-☕ Coffee & 🍕 Pizza
-</td>
-</tr>
-</table>
+- 🧠 **ML Libraries:** TensorFlow, PyTorch, Scikit-learn
+- 💻 **Development:** Python Community
+- 👥 **Contributors:** Amazing Open Source Community  
+- ☕ **Fuel:** Coffee & Pizza
 
 </div>
 
@@ -313,7 +435,7 @@ Amazing Open Source Community
 
 <div align="center">
 
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900">
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="700">
 
 ### ⭐ If you like TrainIT, give it a star! It really motivates us! ⭐
 
@@ -332,315 +454,5 @@ Amazing Open Source Community
 **Made with 💻 and ☕ by [devmdave](https://github.com/devmdave)**
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%"/>
-
-</div>our changes
-</td>
-<td align="center" width="20%">
-<img src="https://img.icons8.com/fluency/96/commit-git.png" width="50"/><br/>
-<b>4. Commit</b><br/>
-Commit changes
-</td>
-<td align="center" width="20%">
-<img src="https://img.icons8.com/fluency/96/pull-request.png" width="50"/><br/>
-<b>5. PR</b><br/>
-Open Pull Request
-</td>
-</tr>
-</table>
-
-<div align="center">
-
-### 👥 Contributors
-
-<a href="https://github.com/devmdave/TrainIT/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=devmdave/TrainIT" />
-</a>
-
-<br/>
-
-**Thank you to all our amazing contributors! 🎉**
-
-<img src="https://img.shields.io/github/contributors/devmdave/TrainIT?style=for-the-badge&color=blueviolet" />
-<img src="https://img.shields.io/github/forks/devmdave/TrainIT?style=for-the-badge&color=blue" />
-<img src="https://img.shields.io/github/issues-pr/devmdave/TrainIT?style=for-the-badge&color=green" />
-
-</div>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="docs/configuration.md">
-<img src="https://img.icons8.com/fluency/96/settings.png" width="60"/><br/>
-<b>⚙️ Configuration</b>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="docs/api-reference.md">
-<img src="https://img.icons8.com/fluency/96/api.png" width="60"/><br/>
-<b>📡 API Reference</b>
-</a>
-</td>
-</tr>
-<tr>
-<td align="center" width="25%">
-<a href="docs/faq.md">
-<img src="https://img.icons8.com/fluency/96/help.png" width="60"/><br/>
-<b>❓ FAQ</b>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="docs/tutorials.md">
-<img src="https://img.icons8.com/fluency/96/video.png" width="60"/><br/>
-<b>🎥 Tutorials</b>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="docs/examples.md">
-<img src="https://img.icons8.com/fluency/96/code.png" width="60"/><br/>
-<b>💻 Examples</b>
-</a>
-</td>
-<td align="center" width="25%">
-<a href="docs/troubleshooting.md">
-<img src="https://img.icons8.com/fluency/96/bug.png" width="60"/><br/>
-<b>🐛 Troubleshooting</b>
-</a>
-</td>
-</tr>
-</table>
-
-</div>mg src="https://img.shields.io/badge/✅-00C853?style=for-the-badge" /> |
-
-</td>
-<td align="center" width="33%">
-
-### 🤖 ML Capabilities
-
-| Feature | Status |
-|---------|:------:|
-| Multiple Algorithms | <img src="https://img.shields.io/badge/✅-2196F3?style=for-the-badge" /> |
-| Auto Model Selection | <img src="https://img.shields.io/badge/✅-2196F3?style=for-the-badge" /> |
-| Hyperparameter Tuning | <img src="https://img.shields.io/badge/✅-2196F3?style=for-the-badge" /> |
-| Cross-validation | <img src="https://img.shields.io/badge/✅-2196F3?style=for-the-badge" /> |
-
-</td>
-<td align="center" width="33%">
-
-### 📊 Visualization
-
-| Feature | Status |
-|---------|:------:|
-| Real-time Charts | <img src="https://img.shields.io/badge/✅-FF9800?style=for-the-badge" /> |
-| Model Export | <img src="https://img.shields.io/badge/✅-FF9800?style=for-the-badge" /> |
-| Performance Metrics | <img src="https://img.shields.io/badge/✅-FF9800?style=for-the-badge" /> |
-| Report Generation | <img src="https://img.shields.io/badge/✅-FF9800?style=for-the-badge" /> |
-
-</td>
-</tr>
-</table>
-
-</div>
-
-<div align="center">
-
-### 🔧 Supported ML Frameworks
-
-<img src="https://skillicons.dev/icons?i=python,tensorflow,pytorch,sklearn" />
-
-<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-<img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" />
-<img src="https://img.shields.io/badge/XGBoost-1572B6?style=for-the-badge&logo=xgboost&logoColor=white" />
-<img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white" />
-
-</div>
-
-<img src="https://via.placeholder.com/500x300/f093fb/ffffff?text=Training+Dashboard+%F0%9F%93%88" alt="Training Dashboard" width="100%"/>
-
-*Real-time metrics and visualizations at your fingertips*
-
-<img src="https://img.shields.io/badge/Real--Time-Metrics-f093fb?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Live-Updates-4facfe?style=for-the-badge" />
-
-</div>
-</td>
-</tr>
-<tr>
-<td width="50%">
-<div align="center">
-
-### 📈 Results Analysis
-
-<img src="https://via.placeholder.com/500x300/43e97b/ffffff?text=Results+Analysis+%F0%9F%8E%AF" alt="Results" width="100%"/>
-
-*Comprehensive model performance insights*
-
-<img src="https://img.shields.io/badge/Detailed-Analytics-43e97b?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Visual-Reports-38f9d7?style=for-the-badge" />
-
-</div>
-</td>
-<td width="50%">
-<div align="center">
-
-### ⚙️ Configuration Panel
-
-<img src="https://via.placeholder.com/500x300/fa709a/ffffff?text=Configuration+Panel+%E2%9A%99%EF%B8%8F" alt="Config" width="100%"/>
-
-*Fine-tune every aspect of your model*
-
-<img src="https://img.shields.io/badge/Advanced-Settings-fa709a?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Easy-Config-fee140?style=for-the-badge" />
-
-</div>
-</td>
-</tr>
-</table>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
-</div>ort Model<br/>
-📊 Generate Reports
-</td>
-</tr>
-</table>
-
-<div align="center">
-
-### 🎯 Supported File Formats
-
-<img src="https://img.shields.io/badge/CSV-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="CSV"/>
-<img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Excel"/>
-<img src="https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white" alt="JSON"/>
-<img src="https://img.shields.io/badge/Parquet-50ABF1?style=for-the-badge&logo=apache&logoColor=white" alt="Parquet"/>
-
-</div>
-pip package manager
-```
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/devmdave/TrainIT.git
-cd TrainIT
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Launch TrainIT
-python main.py
-```
-
-## 💡 Usage
-
-### **Step 1:** Launch the Application
-```bash
-python main.py
-```
-
-### **Step 2:** Load Your Dataset
-
-<div align="center">
-
-| 📂 Training Data | 🧪 Test Data |
-|-----------------|--------------|
-| Click **"Browse Training Dataset"** | Click **"Browse Test Dataset"** |
-| Select your training data file | Select your test data file |
-| Supports: CSV, Excel, JSON | Supports: CSV, Excel, JSON |
-
-</div>
-
-### **Step 3:** Configure & Train
-
-1. **Select Model Type** - Choose from available ML algorithms
-2. **Set Parameters** - Adjust hyperparameters or use auto-tuning
-3. **Click Train** - Start the automated training process
-4. **Monitor Progress** - Watch real-time metrics and visualizations
-
-### **Step 4:** Evaluate & Export
-
-- 📈 Review performance metrics
-- 💾 Export trained model
-- 📊 Generate detailed reports
-
-## 🎨 Screenshots
-
-<div align="center">
-
-### Main Interface
-*Beautiful, intuitive design for seamless workflow*
-
-### Training Dashboard
-*Real-time metrics and visualizations at your fingertips*
-
-### Results Analysis
-*Comprehensive model performance insights*
-
-</div>
-
-## 🛠️ Supported Features
-
-| Feature | Status |
-|---------|--------|
-| 📁 CSV Dataset Support | ✅ |
-| 📊 Excel Dataset Support | ✅ |
-| 🔄 JSON Dataset Support | ✅ |
-| 🤖 Multiple ML Algorithms | ✅ |
-| 📈 Real-time Visualization | ✅ |
-| 💾 Model Export | ✅ |
-| 🔍 Hyperparameter Tuning | ✅ |
-| 📊 Cross-validation | ✅ |
-| 🎯 Auto Model Selection | ✅ |
-
-## 📚 Documentation
-
-For detailed documentation, please visit our [Wiki](https://github.com/devmdave/TrainIT/wiki) or check out the `docs` folder.
-
-- [Getting Started Guide](docs/getting-started.md)
-- [Configuration Options](docs/configuration.md)
-- [API Reference](docs/api-reference.md)
-- [FAQ](docs/faq.md)
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. 🍴 Fork the repository
-2. 🔨 Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. 💬 Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. 📤 Push to the branch (`git push origin feature/AmazingFeature`)
-5. 🎉 Open a Pull Request
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built with ❤️ by the TrainIT team
-- Powered by cutting-edge ML libraries
-- Icons by [Font Awesome](https://fontawesome.com)
-
-## 📧 Contact & Support
-
-<div align="center">
-
-[![GitHub Issues](https://img.shields.io/badge/Issues-Report%20Bug-red?style=for-the-badge&logo=github)](https://github.com/devmdave/TrainIT/issues)
-[![GitHub Discussions](https://img.shields.io/badge/Discussions-Ask%20Question-blue?style=for-the-badge&logo=github)](https://github.com/devmdave/TrainIT/discussions)
-
-**Found a bug?** [Report it here](https://github.com/devmdave/TrainIT/issues/new)  
-**Have a question?** [Start a discussion](https://github.com/devmdave/TrainIT/discussions/new)
-
-</div>
-
----
-
-<div align="center">
-
-### ⭐ Star us on GitHub — it motivates us a lot!
-
-**Made with 💻 and ☕ by [devmdave](https://github.com/devmdave)**
 
 </div>
